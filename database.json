@@ -1,0 +1,27 @@
+[
+  {
+    "jenis": "Keberatan Biaya",
+    "keyword": "harga tarif ongkos cost salah hitung mahal",
+    "kalimat": "Pemohon keberatan dengan biaya yang dikenakan karena tidak sesuai dengan peraturan yang berlaku."
+  },
+  {
+    "jenis": "Keberatan Biaya",
+    "keyword": "pembayaran fee tidak wajar",
+    "kalimat": "Berdasarkan hasil pemeriksaan, pemohon menganggap besaran biaya tidak wajar."
+  },
+  {
+    "jenis": "Keberatan Dokumen",
+    "keyword": "berkas file lampiran kurang tidak memenuhi syarat",
+    "kalimat": "Pemohon keberatan karena dokumen yang diserahkan kurang lengkap."
+  },
+  {
+    "jenis": "Keberatan Dokumen",
+    "keyword": "identitas diri ktp sim paspor",
+    "kalimat": "Pemohon tidak melampirkan salinan KTP/identitas diri sehingga permohonan tidak dapat diproses."
+  },
+  {
+    "jenis": "Keberatan Jangka Waktu",
+    "keyword": "telat lambat terlambat lewat waktu deadline",
+    "kalimat": "Pemohon menyampaikan keberatan karena permohonan tidak dijawab dalam 10 hari kerja."
+  }
+]

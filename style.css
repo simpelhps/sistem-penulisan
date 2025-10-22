@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#searchInput {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Penting agar padding tidak merusak layout */
+}
+
+#results {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+.result-item {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    display: flex; /* Mengatur layout paragraf dan tombol */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result-item p {
+    margin: 0;
+    flex-grow: 1; /* Membuat teks mengisi ruang yang tersedia */
+    padding-right: 15px;
+}
+
+.result-item button {
+    padding: 8px 12px;
+    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0; /* Mencegah tombol mengecil */
+}
+
+.result-item button:hover {
+    background-color: #0056b3;
+}
