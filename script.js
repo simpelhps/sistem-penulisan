@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const options = {
       keys: ['jenis', 'kalimat', 'keyword'],
       includeScore: true,
-      threshold: 0.3,                       
+      threshold: 0.1,                       
       ignoreLocation: true
     };
 
@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 }); // end DOMContentLoaded
+
 
 
 
