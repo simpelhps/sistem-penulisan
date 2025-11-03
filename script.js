@@ -154,9 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (searchInput) {
         searchInput.disabled = false;
         searchInput.removeAttribute('aria-busy');
-        // tampilkan panduan singkat
-        showMessage('Ketik minimal 2 huruf untuk mulai mencari.');
-      }
+        }
     })
     .catch(err => {
       console.error('Gagal memuat database.json:', err);
@@ -170,4 +168,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 }); // end DOMContentLoaded
+
 
