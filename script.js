@@ -95,9 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const options = {
-      keys: ['kalimat', 'keyword'], // kolom yang dicari
+      keys: ['jenis','kalimat', 'keyword'], // kolom yang dicari
       includeScore: true,
-      threshold: 0.4                // toleransi fuzzy (0.0 = exact, 1.0 = very loose)
+      threshold: 0.3                // toleransi fuzzy (0.0 = exact, 1.0 = very loose)
     };
 
     fuse = new Fuse(dataKalimat, options);
@@ -170,3 +170,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 }); // end DOMContentLoaded
+
