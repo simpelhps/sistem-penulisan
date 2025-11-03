@@ -1,63 +1,185 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #white;
-    margin: 0;
-    padding: 20px;
-    color: #ffcd02;
+/* ===== Import font: Barlow (body) + Poppins (judul) ===== */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700&family=Poppins:wght@400;600;700&display=swap');
+
+:root{
+  /* Warna tema */
+  --blue-900: #162757;   /* biru utama: jadi background halaman */
+  --blue-800: #0f1f4b;   /* variasi biru untuk hover/tonal */
+  --yellow-500: #ffcd02; /* kuning aksen */
+  --card-bg: #ffffff;    /* background kartu/container (putih agar kontras) */
+  --text-on-card: #102033; /* teks di atas kartu putih */
+  --text-on-blue: #e6eef8;  /* teks yang tampil di atas latar biru */
+  --muted-on-card: #5a6b82;
+  --input-border: rgba(255,255,255,0.12);
+  --result-bg: rgba(255,255,255,0.04); /* subtle layer di atas biru */
+  --radius: 8px;
+  --shadow: 0 6px 18px rgba(8,16,32,0.25);
+  --success: #28a745;
 }
 
-.container { /* main box */
-    max-width: 800px;
-    margin: auto;
-    background: #162757;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+/* ===== Box-sizing global ===== */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ===== Base ===== */
+html{ font-size: 100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+body{
+  margin: 0;
+  padding: 1.25rem; /* ruang tepi */
+  /* BIRU jadi latar utama halaman */
+  background: linear-gradient(180deg, var(--blue-900), #0e1a3c 60%);
+  color: var(--text-on-blue); /* teks umum di atas biru */
+  font-family: 'Barlow', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
 }
 
-#searchInput { /* search box */
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+/* ===== Container utama (card putih agar konten terbaca) ===== */
+/* Kartu putih ditempatkan di atas background biru untuk kontras */
+.container{
+  max-width: 50rem;
+  margin-inline: auto;
+  background: var(--card-bg); /* putih */
+  padding: 1.6rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--text-on-card); /* teks gelap di atas kartu putih */
 }
 
-#results {
-    border-top: 1px solid #eee;
-    padding-top: 10px;
+/* ===== Judul ===== */
+/* Judul pakai Poppins, warna biru agar konsisten dengan tema */
+.container h1{
+  font-family: 'Poppins', 'Barlow', system-ui, sans-serif;
+  color: var(--blue-900); /* judul di kartu putih berwarna biru */
+  margin: 0 0 0.5rem 0;
+  font-size: 1.75rem;
+  font-weight: 600;
 }
 
-.result-item {
-    background: #f9f9f9;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    display: flex; /* Mengatur layout paragraf dan tombol */
-    justify-content: space-between;
-    align-items: center;
+/* ===== Paragraf deskripsi ===== */
+.container p{
+  color: var(--muted-on-card);
+  font-size: 1.0625rem;
+  margin-top: 0;
 }
 
-.result-item p {
-    margin: 0;
-    flex-grow: 1; /* Membuat teks mengisi ruang yang tersedia */
-    padding-right: 15px;
+/* ===== Jika butuh teks langsung di body (di luar .container) ===== */
+/* Misal header ringan di atas kartu, tetap terlihat di latar biru */
+.header-text{
+  color: var(--text-on-blue);
+  text-align: center;
+  margin: 0 0 1rem 0;
 }
 
-.result-item button {
-    padding: 8px 12px;
-    border: 1px solid #007bff;
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    flex-shrink: 0; /* Mencegah tombol mengecil */
+/* ===== Input pencarian ===== */
+/* Input kita letakkan di dalam .container, tetapi tampilannya disesuaikan */
+#searchInput{
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #e6e9ee;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fff;
+  color: var(--text-on-card);
+}
+#searchInput:focus{
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(22,37,87,0.06);
+  border-color: var(--blue-900);
 }
 
-.result-item button:hover {
-    background-color: #0056b3;
-
+/* ===== Wrapper hasil pencarian ===== */
+#results{
+  border-top: 1px solid #f0f1f3;
+  padding-top: 1.25rem;
 }
 
+/* ===== Item hasil pencarian ===== */
+/* Hasil tampil di kartu (putih) agar mudah dibaca; jika ingin layer di biru, ubah background */
+.result-item{
+  background: #f9f9f9;
+  padding: 0.9rem;
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #e6e6e6;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* teks di dalam result-item (gelap karena berada di kartu putih) */
+.result-item p{
+  color: #111;
+  margin: 0;
+  flex: 1 1 auto;
+  padding-right: 0.75rem;
+  line-height: 1.5;
+  font-size: 0.98rem;
+}
+
+/* ===== Tombol 'Salin' ===== */
+/* Gunakan biru sebagai tombol utama untuk konsistensi; tombol berada di kartu putih */
+.result-item button{
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--blue-900);
+  background-color: var(--blue-900);
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 150ms ease, transform 120ms ease;
+  font-size: 0.95rem;
+}
+
+/* hover + fokus tombol */
+.result-item button:hover,
+.result-item button:focus{
+  background-color: var(--blue-800);
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(8,16,32,0.12);
+}
+.result-item button:focus{
+  box-shadow: 0 0 0 4px rgba(255,205,2,0.12); /* ring kuning samar untuk fokus */
+}
+
+/* ===== State copied ===== */
+.result-item button.copied{
+  background-color: var(--success);
+  border-color: var(--success);
+}
+
+/* ===== Tombol alternatif (CTA kuning) ===== */
+.btn-cta{
+  background: var(--yellow-500);
+  color: #081018; /* teks gelap di atas kuning agar kontras */
+  border: 2px solid rgba(0,0,0,0.06);
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+}
+
+/* ===== Utility: teks aksen kuning (mis. highlight) ===== */
+.a-accent{ color: var(--yellow-500); }
+.bg-accent{ background: var(--yellow-500); color: #081018; padding: 0.25rem 0.5rem; border-radius: 4px; }
+
+/* ===== Fokus default untuk aksesibilitas ===== */
+:focus{ outline-offset: 2px; }
+
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion: reduce){
+  .result-item button{ transition: none; transform: none; }
+}
+
+/* ===== Responsif: layar sempit ===== */
+@media (max-width: 480px){
+  body{ padding: 0.75rem; }
+  .container{ padding: 1rem; border-radius: 6px; }
+  .container h1{ font-size: 1.25rem; }
+  .result-item{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  .result-item p{ padding-right: 0; }
+  .result-item button{ width: auto; align-self: flex-end; }
+}
