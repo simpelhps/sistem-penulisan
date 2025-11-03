@@ -88,16 +88,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ----- Inisialisasi Fuse sekali (dipanggil setelah dataKalimat tersedia) -----
   function initFuse() {
-    // Pastikan Fuse sudah dimuat (jika tidak, peringatan di console)
+    // ...
     if (typeof Fuse === 'undefined') {
-      console.warn('Fuse.js tidak ditemukan. Pastikan script Fuse dimuat di HTML sebelum script ini.');
+      console.warn('Fuse.js tidak ditemukan...');
       return;
     }
 
     const options = {
-      keys: ['jenis','kalimat', 'keyword'], // kolom yang dicari
+      keys: ['jenis', 'kalimat', 'keyword'],
       includeScore: true,
-      threshold: 0.3                // toleransi fuzzy (0.0 = exact, 1.0 = very loose)
+      threshold: 0.3,                       
       ignoreLocation: true
     };
 
@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 }); // end DOMContentLoaded
+
 
 
 
