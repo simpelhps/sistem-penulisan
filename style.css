@@ -206,3 +206,7 @@ header .container {
   margin: 0;
   text-align: left;
 }
+
+header,
+main {
+  margin-bottom: 1.5rem;
