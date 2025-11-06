@@ -231,32 +231,32 @@
   },
   {
     "jenis": "Patentabilitas Invensi - Kebaruan",
-    "kalimat": "Klaim [nomor klaim] dalam permohonan ini memiliki subject-matter yang tidak sama dengan teknologi yang diungkapkan oleh dokumen pembanding [nomor dokumen pembanding]. Dengan demikian, permohonan ini memenuhi persyaratan kebaruan berdasarkan ketentuan Pasal 5 dan 6 Undang-Undang No. 13 Tahun 2016 tentang Paten.",
+    "kalimat": "Klaim [nomor klaim] dalam permohonan ini memiliki <i>subject-matter</i> yang tidak sama dengan teknologi yang diungkapkan oleh dokumen pembanding [nomor dokumen pembanding]. Dengan demikian, permohonan ini memenuhi persyaratan kebaruan berdasarkan ketentuan Pasal 5 dan 6 Undang-Undang No. 13 Tahun 2016 tentang Paten.",
     "keyword": "novelty UU 2016"
   },
   {
     "jenis": "Patentabilitas Invensi - Kebaruan",
-    "kalimat": "Klaim [nomor klaim] dalam permohonan ini memiliki subject-matter yang sama dengan teknologi yang diungkapkan oleh dokumen pembanding [nomor dokumen pembanding]. Dengan demikian, permohonan ini tidak memenuhi persyaratan kebaruan berdasarkan ketentuan Pasal 5 dan 6 Undang-Undang No. 13 Tahun 2016 tentang Paten.",
+    "kalimat": "Klaim [nomor klaim] dalam permohonan ini memiliki <i>subject-matter</i> yang sama dengan teknologi yang diungkapkan oleh dokumen pembanding [nomor dokumen pembanding]. Dengan demikian, permohonan ini tidak memenuhi persyaratan kebaruan berdasarkan ketentuan Pasal 5 dan 6 Undang-Undang No. 13 Tahun 2016 tentang Paten.",
     "keyword": "lack novelty tolak UU 2016"
   },
   {
     "jenis": "Patentabilitas Invensi - Langkah Inventif",
-    "kalimat": "Klaim [nomor klaim] dalam permohonan ini memiliki subject-matter yang tidak dapat diduga sebelumnya oleh dokumen pembanding [nomor dokumen pembanding], baik sendiri maupun kombinasi. Dengan demikian, permohonan ini memenuhi persyaratan langkah inventif berdasarkan ketentuan Pasal 7 Undang-Undang No. 13 Tahun 2016 tentang Paten.",
+    "kalimat": "Klaim [nomor klaim] dalam permohonan ini memiliki <i>subject-matter</i> yang tidak dapat diduga sebelumnya oleh dokumen pembanding [nomor dokumen pembanding], baik sendiri maupun kombinasi. Dengan demikian, permohonan ini memenuhi persyaratan langkah inventif berdasarkan ketentuan Pasal 7 Undang-Undang No. 13 Tahun 2016 tentang Paten.",
     "keyword": "inventive step non-obvious UU 2016"
   },
   {
     "jenis": "Patentabilitas Invensi - Langkah Inventif",
-    "kalimat": "Klaim [nomor klaim] dalam permohonan ini memiliki subject-matter yang dapat diduga sebelumnya oleh dokumen pembanding [nomor dokumen pembanding], baik sendiri maupun kombinasi. Dengan demikian, permohonan ini tidak memenuhi persyaratan langkah inventif berdasarkan ketentuan Pasal 7 Undang-Undang No. 13 Tahun 2016 tentang Paten.",
+    "kalimat": "Klaim [nomor klaim] dalam permohonan ini memiliki <i>subject-matter</i> yang dapat diduga sebelumnya oleh dokumen pembanding [nomor dokumen pembanding], baik sendiri maupun kombinasi. Dengan demikian, permohonan ini tidak memenuhi persyaratan langkah inventif berdasarkan ketentuan Pasal 7 Undang-Undang No. 13 Tahun 2016 tentang Paten.",
     "keyword": "lack inventive step obvious tolak UU 2016"
   },
   {
     "jenis": "Patentabilitas Invensi - Penerapan dalam Industri",
-    "kalimat": "Klaim [nomor klaim] dalam permohonan ini memiliki subject-matter yang dapat dilaksanakan dalam industri. Dengan demikian, permohonan ini memenuhi persyaratan penerapan dalam industri berdasarkan ketentuan Pasal 8 Undang-Undang No. 13 Tahun 2016 tentang Paten.",
+    "kalimat": "Klaim [nomor klaim] dalam permohonan ini memiliki <i>subject-matter</i> yang dapat dilaksanakan dalam industri. Dengan demikian, permohonan ini memenuhi persyaratan penerapan dalam industri berdasarkan ketentuan Pasal 8 Undang-Undang No. 13 Tahun 2016 tentang Paten.",
     "keyword": "industrial applicability applied UU 2016"
   },
   {
     "jenis": "Patentabilitas Invensi - Penerapan dalam Industri",
-    "kalimat": "Klaim [nomor klaim] dalam permohonan ini memiliki subject-matter yang tidak dapat dilaksanakan dalam industri. Dengan demikian, permohonan ini memenuhi persyaratan penerapan dalam industri berdasarkan ketentuan Pasal 8 Undang-Undang No. 13 Tahun 2016 tentang Paten.",
+    "kalimat": "Klaim [nomor klaim] dalam permohonan ini memiliki <i>subject-matter</i> yang tidak dapat dilaksanakan dalam industri. Dengan demikian, permohonan ini memenuhi persyaratan penerapan dalam industri berdasarkan ketentuan Pasal 8 Undang-Undang No. 13 Tahun 2016 tentang Paten.",
     "keyword": "lack industrial applicability UU 2016"
   },
   {

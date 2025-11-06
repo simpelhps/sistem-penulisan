@@ -14,14 +14,13 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html{ font-size: 100%; -webkit-font-smoothing:antialiased; -moz-osx-smoothing:grayscale; }
+
 body{
   margin: 0;
   padding: 1.25rem; 
   background-color: var(--blue-900);
-  background-image: url('background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat
+  position: relative; 
+  z-index: 1;
   color: var(--text-on-blue); 
   font-family: 'Barlow', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   line-height: 1.5;
@@ -181,4 +180,21 @@ body{
 header,
 main {
   margin-bottom: 1.5rem;
+}
+
+body::before {
+  content: ''; 
+  
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background-image: url('background.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  
+  z-index: -1; 
 }
