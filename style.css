@@ -16,13 +16,12 @@
 html{ font-size: 100%; -webkit-font-smoothing:antialiased; -moz-osx-smoothing:grayscale; }
 body{
   margin: 0;
-  padding: 1.25rem;
+  padding: 1.25rem; 
   background-color: var(--blue-900);
   background-image: url('background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat
-  background-attachment: fixed;
   color: var(--text-on-blue); 
   font-family: 'Barlow', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   line-height: 1.5;
@@ -163,10 +162,6 @@ body{
   clip: rect(0,0,0,0);
   white-space: nowrap;
   border: 0;
-}
-
-header .container {
-  padding-top: 0;
 }
 
 .not-found,
