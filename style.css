@@ -151,6 +151,40 @@ body{
   .result-item button{ width: auto; align-self: flex-end; }
 }
 
+footer.container {
+  margin-top: 1.5rem; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: var(--muted-on-card); 
+  font-size: 0.9rem;
+}
+
+footer.container p {
+  margin: 0;
+}
+
+.btn-usulan {
+  display: inline-block;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--blue-900);
+  background-color: var(--yellow-500);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.btn-usulan:hover,
+.btn-usulan:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(255,205,2,0.3);
+  outline: none;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -177,10 +211,7 @@ body{
   text-align: left;
 }
 
-header,
-main {
-  margin-bottom: 1.5rem;
-}
+header
 
 body::before {
   content: ''; 
