@@ -22,6 +22,24 @@
 </head>
 <body>
 
+  <button id="menu-toggle" aria-label="Tampilkan Daftar Isi" aria-expanded="false">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </button>
+
+  <aside id="sidebar">
+    <div class="sidebar-header">
+      <h3>Daftar Isi</h3>
+      <button id="sidebar-close" aria-label="Tutup Daftar Isi">&times;</button>
+    </div>
+    <ul id="sidebar-list"></ul>
+  </aside>
+
+  <div id="sidebar-overlay"></div>
+
   <header>
     <div class="container">
       <h1>Sistem Penulisan Surat HPS (SIMPEL-HPS)</h1>
@@ -51,6 +69,9 @@
 
   <footer class="container">
     <p style="margin:0;font-size:.9rem;color:inherit">© <span id="year"></span> SIMPEL-HPS</p>
+    <a href="https://docs.google.com/forms/d/1q_Pq-rbwIZ2oyQsWfoT0S8cSI1P_rqMTuYIA9UvCxf4" target="_blank" class="btn-usulan">
+      Beri Usulan Kalimat Baru
+    </a>
   </footer>
 
   <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
@@ -61,7 +82,6 @@
   </noscript>
 
   <script>
-    // Set tahun otomatis di footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>

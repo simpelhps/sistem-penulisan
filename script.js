@@ -3,8 +3,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('searchInput');
   const resultsDiv = document.getElementById('results');
 
+  const menuToggle = document.getElementById('menu-toggle');
+  const sidebarClose = document.getElementById('sidebar-close');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarOverlay = document.getElementById('sidebar-overlay');
+  const sidebarList = document.getElementById('sidebar-list');
+
   let dataKalimat = [];
   let fuse = null;
+
+  function openSidebar() {
+    document.body.classList.add('sidebar-open');
+    menuToggle.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeSidebar() {
+    document.body.classList.remove('sidebar-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  if (menuToggle && sidebarClose && sidebar && sidebarOverlay) {
+    menuToggle.addEventListener('click', openSidebar);
+    sidebarClose.addEventListener('click', closeSidebar);
+    sidebarOverlay.addEventListener('click', closeSidebar);
+  }
 
   function showMessage(text) {
     resultsDiv.innerHTML = '';
@@ -85,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const options = {
       keys: ['jenis', 'kalimat', 'keyword'],
       includeScore: true,
-      threshold: 0.3,                       
+      threshold: 0.2,                       
       ignoreLocation: true
     };
 
@@ -122,6 +144,17 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Elemen #searchInput tidak ditemukan di DOM.');
   }
 
+  if (sidebarList) {
+    sidebarList.addEventListener('click', (e) => {
+      if (e.target && e.target.classList.contains('sidebar-link')) {
+        const jenis = e.target.getAttribute('data-jenis');
+        searchInput.value = jenis;
+        doSearch(jenis);
+        closeSidebar();
+      }
+    });
+  }
+
   fetch('database.json')
     .then(response => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -130,6 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(data => {
       dataKalimat = Array.isArray(data) ? data : [];
       initFuse();
+
+      populateSidebar(dataKalimat);
 
       if (searchInput) {
         searchInput.disabled = false;
@@ -145,7 +180,24 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('input', debouncedHandler);
   }
 
+function populateSidebar(data) {
+    if (!sidebarList) return;
+    const allJenis = data.map(item => item.jenis);
+    const uniqueJenis = [...new Set(allJenis)];
+    uniqueJenis.sort(); 
+    uniqueJenis.forEach(jenis => {
+      const li = document.createElement('li');
+      const button = document.createElement('button');
+      button.textContent = jenis;
+      button.className = 'sidebar-link';
+      button.setAttribute('data-jenis', jenis);
+      li.appendChild(button);
+      sidebarList.appendChild(li);
+    });
+  }
+
 });
+
 
 
 
