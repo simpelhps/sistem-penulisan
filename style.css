@@ -1,61 +1,212 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    color: #333;
+:root{
+  /* Warna tema */
+  --blue-900: #162757;    /* biru utama: jadi background halaman */
+  --blue-800: #0f1f4b;    /* variasi biru untuk hover/tonal */
+  --yellow-500: #ffcd02;  /* kuning aksen (untuk fokus) */
+  --card-bg: #ffffff;     /* background kartu/container */
+  --text-on-card: #102033; /* teks di atas kartu putih */
+  --text-on-blue: #e6eef8;   /* teks yang tampil di atas latar biru */
+  --muted-on-card: #5a6b82;
+  --success: #28a745;
+  
+  /* Variabel tidak terpakai --input-border dan --result-bg DIHAPUS */
+
+  /* Radius konsisten */
+  --radius: 8px; 
+  --shadow: 0 6px 18px rgba(8,16,32,0.25);
 }
 
-.container {
-    max-width: 800px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+/* ===== Box-sizing global ===== */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ===== Base ===== */
+html{ font-size: 100%; -webkit-font-smoothing:antialiased; -moz-osx-smoothing:grayscale; }
+body{
+  margin: 0;
+  padding: 1.25rem;
+  /* Background disederhanakan (gradien dihapus) */
+  background: var(--blue-900);
+  color: var(--text-on-blue); 
+  font-family: 'Barlow', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
 }
 
-#searchInput {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Penting agar padding tidak merusak layout */
+/* ===== Container utama (card putih agar konten terbaca) ===== */
+.container{
+  max-width: 50rem;
+  margin-inline: auto;
+  background: var(--card-bg); 
+  padding: 1.6rem;
+  border-radius: var(--radius); /* KONSISTEN */
+  box-shadow: var(--shadow);
+  color: var(--text-on-card); 
 }
 
-#results {
-    border-top: 1px solid #eee;
-    padding-top: 10px;
+/* ===== Judul ===== */
+.container h1{
+  font-family: 'Poppins', 'Barlow', system-ui, sans-serif;
+  color: var(--blue-900); 
+  margin: 0 0 0.5rem 0;
+  font-size: 1.75rem;
+  font-weight: 600;
 }
 
-.result-item {
-    background: #f9f9f9;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    display: flex; /* Mengatur layout paragraf dan tombol */
-    justify-content: space-between;
-    align-items: center;
+/* ===== Paragraf deskripsi ===== */
+.container p{
+  color: var(--muted-on-card);
+  font-size: 1.0625rem;
+  margin-top: 0;
 }
 
-.result-item p {
-    margin: 0;
-    flex-grow: 1; /* Membuat teks mengisi ruang yang tersedia */
-    padding-right: 15px;
+/* ===== Input pencarian ===== */
+#searchInput{
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #e6e9ee;
+  border-radius: var(--radius); /* KONSISTEN */
+  font-size: 1rem;
+  background: #fff;
+  color: var(--text-on-card);
+}
+#searchInput:focus{
+  /* PERBAIKAN AKSESIBILITAS: outline:none dihapus */
+  outline: 2px solid var(--yellow-500);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(22,37,87,0.06);
+  border-color: var(--blue-900);
 }
 
-.result-item button {
-    padding: 8px 12px;
-    border: 1px solid #007bff;
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    flex-shrink: 0; /* Mencegah tombol mengecil */
+/* ===== Wrapper hasil pencarian ===== */
+#results{
+  border-top: 1px solid #f0f1f3;
+  padding-top: 1.25rem;
 }
 
-.result-item button:hover {
-    background-color: #0056b3;
+/* ===== Item hasil pencarian ===== */
+.result-item{
+  background: #f9f9f9;
+  padding: 0.9rem;
+  margin-bottom: 0.75rem;
+  border-radius: var(--radius); /* KONSISTEN */
+  border: 1px solid #e6e6e6;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
 }
+
+.result-item p{
+  color: #111;
+  margin: 0;
+  flex: 1 1 auto;
+  padding-right: 0.75rem;
+  line-height: 1.5;
+  font-size: 0.98rem;
+}
+
+/* ===== Tombol 'Salin' ===== */
+.result-item button{
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--blue-900);
+  background-color: var(--blue-900);
+  color: #fff;
+  border-radius: var(--radius); /* KONSISTEN */
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 150ms ease, transform 120ms ease;
+  font-size: 0.95rem;
+}
+
+/* hover + fokus tombol */
+.result-item button:hover,
+.result-item button:focus{
+  background-color: var(--blue-800);
+  /* outline: none; DIHAPUS */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(8,16,32,0.12);
+}
+.result-item button:focus{
+  /* PERBAIKAN AKSESIBILITAS: outline ditambah */
+  outline: 2px solid var(--yellow-500);
+  box-shadow: 0 0 0 4px rgba(255,205,2,0.12);
+}
+
+/* ===== State copied ===== */
+.result-item button.copied{
+  background-color: var(--success);
+  border-color: var(--success);
+}
+
+/* ===== Tombol alternatif (CTA kuning) ===== */
+.btn-cta{
+  background: var(--yellow-500);
+  color: #081018; 
+  border: 2px solid rgba(0,0,0,0.06);
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius); /* KONSISTEN */
+}
+
+/* ===== Utility: teks aksen kuning (mis. highlight) ===== */
+.a-accent{ color: var(--yellow-500); }
+.bg-accent{ background: var(--yellow-500); color: #081018; padding: 0.25rem 0.5rem; border-radius: 4px; }
+
+/* ===== Fokus default untuk aksesibilitas ===== */
+:focus{ outline-offset: 2px; }
+
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion: reduce){
+  .result-item button{ transition: none; transform: none; }
+}
+
+/* ===== Responsif: layar sempit ===== */
+@media (max-width: 480px){
+  body{ padding: 0.75rem; }
+  .container{ padding: 1rem; }
+  .container h1{ font-size: 1.25rem; }
+  .result-item{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  .result-item p{ padding-right: 0; }
+  .result-item button{ width: auto; align-self: flex-end; }
+}
+
+/* Untuk menyembunyikan label (sr-only) dari HTML */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Untuk memindahkan 'inline style' dari HTML header */
+header .container {
+  padding-top: 0;
+}
+
+/* Memberi gaya pada pesan 'not-found'/'muted' */
+.not-found,
+.muted {
+  color: var(--muted-on-card);
+  font-size: 0.95rem;
+  padding: 1rem 0.5rem;
+  text-align: center;
+}
+
+/* Perbaikan kecil untuk #search-help */
+#search-help {
+  padding: 0.5rem 0 1rem 0; /* Memberi jarak di bawah input */
+  margin: 0;
+  text-align: left;
+}
+
+header,
+main {
+  margin-bottom: 1.5rem;

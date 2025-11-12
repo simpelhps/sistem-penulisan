@@ -1,20 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIMPEL-HPS</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SIMPEL-HPS</title>
+  <meta name="description" content="Kumpulan rekomendasi penulisan kalimat surat HPS. Ketik kata kunci untuk menemukan contoh kalimat yang relevan.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DF27QMBCGD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DF27QMBCGD');
+  </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Sistem Penulisan Surat Hasil Pemeriksaan Substantif</h1>
-        <p>Ketik kata terkait untuk mencari kalimat rekomendasi:</p>
-        <input type="text" id="searchInput" placeholder="Cari 'sekitar', 'dokumen', dll...">
-        <div id="results"></div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
-    <script src="script.js"></script>
+  <header>
+    <div class="container">
+      <h1>Sistem Penulisan Surat HPS (SIMPEL-HPS)</h1>
+      <p class="header-text">Ketik kata kunci untuk menemukan contoh kalimat yang relevan.</p>
+    </div>
+  </header>
+
+  <main>
+    <div id="main-content" class="container">
+      
+      <label for="searchInput" class="sr-only">Cari kalimat</label>
+      
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Cari 'amandemen', 'biaya', 'SDG'..."
+        aria-describedby="search-help"
+        autocomplete="off"
+      >
+      <div id="search-help" class="muted">Ketik minimal 2 huruf untuk mulai mencari.</div>
+
+      <div id="results" aria-label="Hasil pencarian" aria-live="polite" aria-atomic="false">
+        </div>
+      
+    </div>
+  </main>
+
+  <footer class="container">
+    <p style="margin:0;font-size:.9rem;color:inherit">© <span id="year"></span> SIMPEL-HPS</p>
+  </footer>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+  <script defer src="script.js"></script>
+
+  <noscript>
+    <div class="container" style="text-align:center; padding: 2rem;">Javascript dinonaktifkan. Untuk menggunakan fitur pencarian, aktifkan JavaScript di browser.</div>
+  </noscript>
+
+  <script>
+    // Set tahun otomatis di footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
+
 </html>
+
+

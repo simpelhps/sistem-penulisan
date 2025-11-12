@@ -1,71 +1,177 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('searchInput');
-    const resultsDiv = document.getElementById('results');
-    let dataKalimat = [];
 
-    // Ambil data dari database.json
-    fetch('database.json')
-        .then(response => response.json())
-        .then(data => {
-            dataKalimat = data;
-        })
-        .catch(error => console.error('Error memuat data:', error));
+  // ----- Ambil elemen penting dari halaman -----
+  const searchInput = document.getElementById('searchInput');
+  const resultsDiv = document.getElementById('results');
 
-    // 2. Fungsi untuk menampilkan hasil
-    function displayResults(results) {
-        resultsDiv.innerHTML = ''; // Kosongkan hasil sebelumnya
-        if (results.length > 0) {
-            results.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'result-item';
+  // ----- State aplikasi -----
+  let dataKalimat = [];   // akan menampung array dari database.json
+  let fuse = null;        // instance Fuse.js (dibuat sekali setelah data dimuat)
 
-                // Elemen untuk teks kalimat
-                const p = document.createElement('p');
-                p.textContent = item.kalimat;
+  // ----- Helper: menampilkan pesan dengan elemen yang bisa dibaca screen reader -----
+  function showMessage(text) {
+    resultsDiv.innerHTML = ''; // bersihkan dulu
+    const msg = document.createElement('div');
+    msg.className = 'not-found';
+    msg.textContent = text;
+    msg.setAttribute('role', 'status');       // agar pembaca layar tahu ada perubahan
+    msg.setAttribute('aria-live', 'polite');  // beri tahu pembaca layar perlahan-lahan
+    resultsDiv.appendChild(msg);
+  }
 
-                // Tombol Salin
-                const button = document.createElement('button');
-                button.textContent = 'Salin';
-                button.onclick = () => {
-                    navigator.clipboard.writeText(item.kalimat).then(() => {
-                        button.textContent = 'Disalin!';
-                        setTimeout(() => {
-                            button.textContent = 'Salin';
-                        }, 2000); // Kembali ke 'Salin' setelah 2 detik
-                    });
-                };
+  // ----- Helper: fungsi debounce (tunda eksekusi sampai pengguna berhenti mengetik) -----
+  function debounce(fn, wait = 200) {
+    let t;
+    return function (...args) {
+      clearTimeout(t);
+      t = setTimeout(() => fn.apply(this, args), wait);
+    };
+  }
 
-                div.appendChild(p);
-                div.appendChild(button);
-                resultsDiv.appendChild(div);
-            });
-        } else {
-            resultsDiv.innerHTML = '<div>Kalimat tidak ditemukan.</div>';
-        }
+  // ----- Render hasil ke DOM (aman: selalu gunakan textContent untuk teks) -----
+  function displayResults(results) {
+    resultsDiv.innerHTML = ''; // kosongkan hasil lama
+
+    if (!results || results.length === 0) {
+      showMessage('Kalimat tidak ditemukan.');
+      return;
     }
 
-    // 3. Event listener untuk input pencarian
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
+    // Gunakan DocumentFragment untuk performa saat menambahkan banyak elemen
+    const frag = document.createDocumentFragment();
 
-        if (searchTerm.length < 2) { // Hanya cari jika lebih dari 1 huruf
-            resultsDiv.innerHTML = '';
-            return;
+    results.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'result-item';
+
+      // Paragraf untuk menampilkan kalimat
+      const p = document.createElement('p');
+      p.textContent = item.kalimat || '';
+
+      // Tombol salin, beri atribut untuk aksesibilitas
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'copy-btn';
+      btn.textContent = 'Salin';
+      // aria-label membantu pembaca layar mengetahui tindakan tombol
+      btn.setAttribute('aria-label', `Salin kalimat: ${item.kalimat ? item.kalimat.slice(0, 40) : ''}`);
+
+      // Handler salin dengan async/await dan penanganan error
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(item.kalimat || '');
+          const previous = btn.textContent;
+          btn.textContent = 'Disalin!';
+          btn.classList.add('copied');
+
+          setTimeout(() => {
+            btn.textContent = previous;
+            btn.classList.remove('copied');
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin ke clipboard:', err);
+          // Umpan balik sederhana jika clipboard tidak tersedia
+          btn.textContent = 'Gagal';
+          setTimeout(() => {
+            btn.textContent = 'Salin';
+          }, 2000);
         }
+      });
 
-        // Konfigurasi Fuse.js untuk fuzzy search
-        const options = {
-            keys: ['keyword', 'kalimat'],
-            includeScore: true,
-            threshold: 0.4 // Atur tingkat toleransi (0.0 = persis, 1.0 = sangat longgar)
-        };
-
-        const fuse = new Fuse(dataKalimat, options);
-        const searchResult = fuse.search(searchTerm);
-        
-        // Ubah format hasil dari Fuse ke format data asli
-        const finalResults = searchResult.map(result => result.item);
-
-        displayResults(finalResults);
+      row.appendChild(p);
+      row.appendChild(btn);
+      frag.appendChild(row);
     });
-});
+
+    resultsDiv.appendChild(frag);
+  }
+
+  // ----- Inisialisasi Fuse sekali (dipanggil setelah dataKalimat tersedia) -----
+  function initFuse() {
+    // ...
+    if (typeof Fuse === 'undefined') {
+      console.warn('Fuse.js tidak ditemukan...');
+      return;
+    }
+
+    const options = {
+      keys: ['jenis', 'kalimat', 'keyword'],
+      includeScore: true,
+      threshold: 0.2,                       
+      ignoreLocation: true
+    };
+
+    fuse = new Fuse(dataKalimat, options);
+  }
+
+  // ----- Fungsi pencarian utama (dipanggil setelah debounce) -----
+  function doSearch(term) {
+    const searchTerm = String(term || '').trim();
+
+    // jika input kurang dari 2 karakter, kosongkan hasil
+    if (searchTerm.length < 2) {
+      resultsDiv.innerHTML = '';
+      return;
+    }
+
+    // jika fuse belum siap, tampilkan pesan
+    if (!fuse) {
+      showMessage('Data belum siap. Harap tunggu sebentar.');
+      return;
+    }
+
+    // lakukan pencarian dan ambil objek item dari setiap hasil
+    const searchResult = fuse.search(searchTerm);
+    const finalResults = searchResult.map(r => r.item);
+
+    displayResults(finalResults);
+  }
+
+  // ----- Debounced handler untuk event input -----
+  const debouncedHandler = debounce((e) => {
+    doSearch(e.target.value);
+  }, 180);
+
+  // ----- Disable input sampai data selesai dimuat (menghindari kebingungan) -----
+  if (searchInput) {
+    searchInput.disabled = true;
+    searchInput.setAttribute('aria-busy', 'true');
+  } else {
+    console.error('Elemen #searchInput tidak ditemukan di DOM.');
+  }
+
+  // ----- Ambil data dari database.json lalu inisialisasi Fuse -----
+  fetch('database.json')
+    .then(response => {
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.json();
+    })
+    .then(data => {
+      // Pastikan format data adalah array
+      dataKalimat = Array.isArray(data) ? data : [];
+      initFuse();
+
+      // Aktifkan kembali input setelah data siap
+      if (searchInput) {
+        searchInput.disabled = false;
+        searchInput.removeAttribute('aria-busy');
+        }
+    })
+    .catch(err => {
+      console.error('Gagal memuat database.json:', err);
+      showMessage('Gagal memuat data. Silakan refresh halaman.');
+      // biarkan input tetap disabled agar user tidak bingung
+    });
+
+  // ----- Pasang event listener input (jika elemen ada) -----
+  if (searchInput) {
+    searchInput.addEventListener('input', debouncedHandler);
+  }
+
+}); // end DOMContentLoaded
+
+
+
+
+
+
