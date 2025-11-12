@@ -285,12 +285,10 @@ body::before {
 body.sidebar-open #sidebar {
   transform: translateX(0);
 }
+
 body.sidebar-open #sidebar-overlay {
   opacity: 1;
   pointer-events: auto;
-}
-body.sidebar-open {
-  transform: translateX(300px);
 }
 
 .sidebar-header {
@@ -350,4 +348,19 @@ body.sidebar-open {
   background-color: #f9f9f9;
   color: var(--blue-900);
   outline: none;
+}
+
+.sidebar-note {
+  font-size: 0.9rem;
+  color: var(--muted-on-card);
+  background-color: #f9f9f9;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  border: 1px solid #eee;
+}
+
+.sidebar-note strong {
+  color: var(--blue-900);
 }
