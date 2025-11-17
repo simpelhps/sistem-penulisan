@@ -5,6 +5,11 @@
     "keyword": "amend revisi tambah ubah koreksi ruang lingkup UU 2016 39(2)"
   },
   {
+    "jenis": "Amandemen",
+    "kalimat": "Berdasarkan surat Pemohon nomor [nomor surat Pemohon] tanggal [tanggal surat Pemohon], klaim telah diamandemen dari [jumlah klaim awal] klaim menjadi [jumlah klaim amandemen] klaim.",
+    "keyword": "amend revisi ubah setuju UU 2016 39(2)"
+  },
+  {
     "jenis": "Sumber Daya Genetik/Pengetahuan Tradisional",
     "kalimat": "Klaim [nomor klaim] berhubungan dengan <i>subject-matter</i> yang berkaitan dengan dan/atau berasal dari sumber daya genetik, tetapi asal sumber belum diungkapkan pada deskripsi permohonan ini. Berdasarkan Pasal 26 ayat (1) Undang-Undang No. 13 Tahun 2016 tentang Paten, jika Invensi berkaitan dengan dan/atau berasal dari sumber daya genetik dan/atau pengetahuan tradisional, harus disebutkan dengan jelas dan benar asal sumber daya genetik dan/atau pengetahuan tradisional tersebut dalam deskripsi.",
     "keyword": "SDG genetic resources origin UU 2016 26(1)"
@@ -59,6 +64,11 @@
     "kalimat": "Klaim [nomor klaim] berhubungan dengan <i>subject-matter</i> yang tercakup dalam pasal 4 huruf (f) Undang-Undang No. 13 Tahun 2016 tentang Paten mengenai fitur-fitur teknik yang bukan merupakan invensi, dimana dalam hal ini klaim [nomor klaim] memiliki fitur-fitur teknik terkait dengan temuan (<i>discovery</i>) berupa bentuk baru dari senyawa yang sudah ada yang tidak menghasilkan peningkatan khasiat bermakna dan terdapat perbedaan struktur kimia terkait yang sudah diketahui dari senyawa, sehingga dipertimbangkan untuk ditolak.",
     "keyword": "polimorf polymorph kristal isomer new form efikasi 4(f) 4f"
   },
+    {
+    "jenis": "Invensi Tidak Mencakup (UU 2016)",
+    "kalimat": "[Nomor dokumen pembanding] mengungkapkan penggunaan dari produk [xxx] untuk [penggunaan pertama] sehingga penggunaan yang diungkapkan pada invensi ini dinilai sebagai temuan (<i>discovery</i>).",
+    "keyword": "first medical use 4(f) 4f"
+  },
   {
     "jenis": "Invensi Tidak Mencakup (UU 2024)",
     "kalimat": "Klaim [nomor klaim] berhubungan dengan <i>subject-matter</i> yang tercakup dalam pasal 4 huruf (a) Undang-Undang No. 65 Tahun 2024 tentang Perubahan Ketiga atas Undang-Undang No. 13 Tahun 2016 tentang Paten mengenai fitur-fitur teknik yang bukan merupakan invensi, dimana dalam hal ini klaim [nomor klaim] memiliki fitur-fitur teknik terkait dengan kreasi estetika, sehingga dipertimbangkan untuk ditolak.",
@@ -106,6 +116,11 @@
   },
   {
     "jenis": "Invensi yang Tidak Dapat Diberi Paten (UU 2016)",
+    "kalimat": "Klaim [nomor klaim] tidak sesuai dengan ketentuan Pasal 9 huruf (a) Undang-Undang Paten No.13 Tahun 2016 mengenai paten yang tidak dapat diberikan untuk invensi tentang proses atau produk yang pengumuman, penggunaan, atau pelaksanaannya bertentangan dengan peraturan perundang-undangan, agama, ketertiban umum, atau kesusilaan. <i>Subject-matter</i> dalam klaim berkaitan dengan [bahan narkotika] yang diklasifikasikan sebagai Narkotika Golongan I. Berdasarkan penjelasan Pasal 6 ayat (1) Undang-Undang No. 35 Tahun 2009 tentang Narkotika, Narkotika Golongan I, seperti ganja, opium, kokain, dan heroina adalah Narkotika yang hanya dapat digunakan untuk tujuan pengembangan ilmu pengetahuan dan tidak digunakan dalam terapi, serta mempunyai potensi sangat tinggi mengakibatkan ketergantungan. Selain itu, Pasal 8 ayat (1) Undang-Undang No. 35 Tahun 2009 tentang Narkotika menegaskan bahwa Narkotika Golongan I dilarang digunakan untuk kepentingan pelayanan kesehatan. Oleh karena itu, klaim ini bertentangan dengan peraturan perundang-undangan sehingga dipertimbangkan untuk ditolak.",
+    "keyword": "narkoba papaver koka kokaina meskalina amfetamina metamfetamina UU 35 2009 9(a) 9a"
+  },
+  {
+    "jenis": "Invensi yang Tidak Dapat Diberi Paten (UU 2016)",
     "kalimat": "Klaim [nomor klaim] berhubungan dengan <i>subject-matter</i> yang tercakup dalam pasal 9 huruf (b) Undang-Undang No. 13 Tahun 2016 tentang Paten mengenai paten yang tidak dapat diberikan untuk invensi tentang metode pemeriksaan, perawatan, pengobatan dan/atau pembedahan yang diterapkan terhadap manusia dan/ atau hewan sehingga dipertimbangkan untuk ditolak.",
     "keyword": "method examination treatment diagnosis surgery medis terapi 9(b) 9b"
   },
@@ -128,6 +143,11 @@
     "jenis": "Invensi yang Tidak Dapat Diberi Paten (UU 2024)",
     "kalimat": "Klaim [nomor klaim] berhubungan dengan <i>subject-matter</i> yang tercakup dalam pasal 9 huruf (a) Undang-Undang No. 65 Tahun 2024 tentang Perubahan Ketiga atas Undang-Undang No. 13 Tahun 2016 tentang Paten mengenai paten yang tidak dapat diberikan untuk invensi tentang proses, produk, metode, sistem, dan penggunaan, yang pengumuman, penggunaan, atau pelaksanaannya bertentangan dengan peraturan perundang-undangan, agama, ketertiban umum, atau kesusilaan sehingga dipertimbangkan untuk ditolak.",
     "keyword": "moral etika ethic public order 9(a) 9a"
+  },
+  {
+    "jenis": "Invensi yang Tidak Dapat Diberi Paten (UU 2024)",
+    "kalimat": "Klaim [nomor klaim] tidak sesuai dengan ketentuan Pasal 9 huruf (a) Undang-Undang No. 65 Tahun 2024 tentang Perubahan Ketiga atas Undang-Undang No. 13 Tahun 2016 tentang Paten mengenai paten yang tidak dapat diberikan untuk invensi tentang proses, produk, metode, sistem, dan penggunaan, yang pengumuman, penggunaan, atau pelaksanaannya bertentangan dengan peraturan perundang-undangan, agama, ketertiban umum, atau kesusilaan. <i>Subject-matter</i> dalam klaim berkaitan dengan [bahan narkotika] yang diklasifikasikan sebagai Narkotika Golongan I. Berdasarkan penjelasan Pasal 6 ayat (1) Undang-Undang No. 35 Tahun 2009 tentang Narkotika, Narkotika Golongan I, seperti ganja, opium, kokain, dan heroina adalah Narkotika yang hanya dapat digunakan untuk tujuan pengembangan ilmu pengetahuan dan tidak digunakan dalam terapi, serta mempunyai potensi sangat tinggi mengakibatkan ketergantungan. Selain itu, Pasal 8 ayat (1) Undang-Undang No. 35 Tahun 2009 tentang Narkotika menegaskan bahwa Narkotika Golongan I dilarang digunakan untuk kepentingan pelayanan kesehatan. Oleh karena itu, klaim ini bertentangan dengan peraturan perundang-undangan sehingga dipertimbangkan untuk ditolak.",
+    "keyword": "narkoba papaver koka kokaina meskalina amfetamina metamfetamina UU 35 2009 9(a) 9a"
   },
   {
     "jenis": "Invensi yang Tidak Dapat Diberi Paten (UU 2024)",
@@ -283,6 +303,11 @@
     "jenis": "Terjemahan",
     "kalimat": "Terdapat pengungkapan kata [kata yang dirujuk] di dalam deskripsi dan klaim yang masih merupakan bahasa Inggris. Oleh karena itu, Pemohon diharapkan untuk menerjemahkan pengungkapan tersebut ke Bahasa Indonesia yang sesuai dengan bidang teknik invensi ini.",
     "keyword": "terjemah translate asing inggris indonesia"
+  },
+    {
+    "jenis": "Terjemahan",
+    "kalimat": "Istilah [istilah yang dirujuk] mohon diterjemahkan menjadi [istilah rekomendasi Pemeriksa].",
+    "keyword": "terjemah translate frasa pengungkapan"
   },
   {
     "jenis": "Pembayaran Kelebihan Klaim",
